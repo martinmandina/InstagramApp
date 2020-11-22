@@ -21,8 +21,8 @@ def profile(request):
     present_user = request.user
     profile = Profile.get_profile()
     image = Image.images_get_all()
-    comments = Comment.comments_get_all()
-    return render(request,'profile/profile.html',{"comments":comments,"profile":profile,"image":image,"present_user":present_user})
+    comments = Comments.comments_get_all()
+    return render(request,'profile/profile.html',{"comments":comments,"profile":profile,"image":image,"user":present_user})
 
 @login_required(login_url='/accounts/login/')
 def edit(request):
@@ -38,6 +38,20 @@ def edit(request):
         form = UpdateProfileForm()
     return render(request,'profile/update.html',{"form":form}) 
                                                 
-                                                  
+@login_required(login_url="/accounts/login/")
+def results_search(request):
+    present_user = request.user
+    profile = Profile.get_profile()
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_name = Profile.search_profile(search_term)
+        message = search_term
+
+        return render(request,'search.html',{"profiles":profile,"present_user":present__user,"message":message,"username":searched_name})
+                                                                  
+    else:
+        message = "You have not searched"
+        return render(request,'search.html',{"message":message})
+                                          
                                                   
                                                   

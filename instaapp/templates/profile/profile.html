@@ -58,8 +58,18 @@
                                 {% else %}
                                 <a href="#">{{img.user.username}}</a>
                                 {% endif %}
+                       
+                        <div class="card-footer">
+                                {% for comment in comments %}
+                                {% if img.id == comment.image.id %}
+                                <p><b>{{comment.user}}</b>  {{comment.comments}}</p>
+                                <h6  style="font-size:12px"><i>{{comment.comment_date | timesince}} ago</i></h6>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
-                        
+                    {% endif %}
+            </div>
             {% endif %}
             {% endfor %}
         </div>
