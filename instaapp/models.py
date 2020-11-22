@@ -29,3 +29,11 @@ class Profile(models.Model):
         updated = Image.objects.filter(id=id).update(bio = bio)
         return updated
 
+class Image(models.Model):
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image_name = models.CharField(max_length = 50)
+    image_caption =  models.CharField(max_length = 60)
+    profile = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.BooleanField(default=False)
+
+
