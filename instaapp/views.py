@@ -10,5 +10,5 @@ from django.contrib.auth import login, authenticate
 @login_required(login_url='/')
 def main(request):
     images = Image.images_get_all()
-    return render(request, 'main.html', {'images':images})
+    return render(request, 'index.html', {'images':images})
 
