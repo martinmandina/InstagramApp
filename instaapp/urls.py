@@ -10,6 +10,7 @@ urlpatterns=[
     url(r'^search/',views.results_search,name='search'),
     url(r'^imageupload/',views.upload,name='upload'),
     url(r'^comment/(?P<pk>\d+)',views.add_comment,name='comment'),
+    url(r'^myprofile/(?P<pk>\d+)',views.my_profile,name='myprofile'),
 
 
 

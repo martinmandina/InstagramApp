@@ -85,7 +85,20 @@ def add_comment(request,pk):
             return redirect('home')
     else:
         form = NewCommentForm()
-    return render(request, 'comments.html', {"user":current_user,"comment_form":form})
+    return render(request, 'comments.html', {"user":present_user,"comment_form":form})
+
+@login_required(login_url="/accounts/login/")
+def my_profile(request,pk):
+    present_user = request.user
+    images = Image.get_images()
+    profile = Profile.get_profile()
+    comments = Comments.get_comment()
+    user = get_object_or_404(User, pk=pk)
+    return render(request,'profile/myprofile.html',{"user":current_user,"images":images, "user":user,"comments":comments, "profile":profile})
+                                               
+                                              
+                                               
+                                              
                                             
 
                                                     
