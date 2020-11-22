@@ -62,6 +62,15 @@ class Image(models.Model):
         captionn = Image.objects.filter(id=id).update(image_caption = image_caption)
         return captionn
 
+class Comments(models.Model):
+    comments = models.CharField(max_length=60,blank=True,null=True)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+def comment_save(self):
+    self.save()
+
 
 
 
