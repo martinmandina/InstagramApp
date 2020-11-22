@@ -12,8 +12,8 @@
         {% if user.id == prof.user.id %}
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                {% if prof.profilePic %}
-                    <img src="{{prof.profilePhoto.url}}" alt="" class="img-fluid" style="border-radius:50%">
+                {% if prof.profilePhoto %}
+                    <img src="{{prof.profilePhoto.url}}" alt="" class="img-fluid" style="border-radius:20%">
                 {% else %}
                     <img src="/static/img/avatar.png" alt="" class="img-fluid rounded-circle">
                 {% endif %}
