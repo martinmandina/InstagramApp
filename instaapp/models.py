@@ -8,7 +8,7 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        return self.bio
+        return self.bio 
 
     def profile_save(self):
         self.save()
