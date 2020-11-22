@@ -6,6 +6,7 @@ from django.conf.urls import url,include
 urlpatterns=[
     url(r'^$',views.main,name='home'),
     url(r'^profile/',views.profile, name='profile'),
+    url(r'^update/',views.edit,name='edit'),
 
 
 ]

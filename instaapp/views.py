@@ -10,33 +10,32 @@ from .forms import UpdateProfileForm
 # Create your views here.
 @login_required(login_url='/')
 def main(request):
-    user = request.user
+    present_user = request.user
     profile = Profile.get_profile()
     images = Image.images_get_all()
     comments = Comments.comments_get_all()
-    return render(request, 'index.html', {'images':images,"profile":profile,"user":user,"comments":comments})
+    return render(request, 'index.html', {'images':images,"profile":profile,"present_user":present_user,"comments":comments})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    user = request.user
+    present_user = request.user
     profile = Profile.get_profile()
     image = Image.images_get_all()
     comments = Comment.comments_get_all()
-    return render(request,'profile/profile.html',{"comments":comments,"profile":profile,"image":image,"user":user})
+    return render(request,'profile/profile.html',{"comments":comments,"profile":profile,"image":image,"present_user":present_user})
 
- @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def edit(request):
-    title = 'Insta-Gram'
-    current_user = request.user
+    present_user = request.user
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST,request.FILES)
         if form.is_valid():
             update = form.save(commit=False)
-            update.user = current_user
+            update.user = present_user
             update.save()
             return redirect('profile')
     else:
-        form = EditProfileForm()
+        form = UpdateProfileForm()
     return render(request,'profile/update.html',{"form":form}) 
                                                 
                                                   

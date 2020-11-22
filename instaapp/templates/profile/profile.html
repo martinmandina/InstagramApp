@@ -52,7 +52,7 @@
                     {% if img.image %}
                     <div class="card">
                         <div class="card-header">
-                                <img src="{{img.profile.profilePic.url}}" class="img-fluid rounded-circle" style="width:8%;height:8%">
+                                <img src="{{img.profile.profilePhoto.url}}" class="img-fluid rounded-circle" style="width:8%;height:8%">
                                 {% if user.id == img.user.id %}
                                 <a href="{% url 'profile' %}">{{img.user.username}}</a>
                                 {% else %}
