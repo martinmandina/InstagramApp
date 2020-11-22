@@ -4,11 +4,11 @@ from django.http import HttpResponse,Http404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
-from .forms import UpdateProfileForm
+from .forms import UpdateProfileForm,UploadForm
 
 
 # Create your views here.
-@login_required(login_url='/')
+@login_required(login_url='/accounts/login/')
 def main(request):
     present_user = request.user
     profile = Profile.get_profile()
@@ -52,6 +52,26 @@ def results_search(request):
     else:
         message = "You have not searched"
         return render(request,'search.html',{"message":message})
+
+@login_required(login_url="/accounts/login/")
+def upload(request):
+    present_user = request.user
+    profiles = Profile.get_profile()
+    for profile in profiles:
+        if profile.user.id == present_user.id:
+            if request.method == 'POST':
+                form = UploadForm(request.POST,request.FILES)
+                if form.is_valid():
+                    upload = form.save(commit=False)
+                    upload.user = present_user
+                    upload.profile = profile
+                    upload.save()
+                    return redirect('home')
+            else:
+                form = UploadForm()
+            return render(request,'fresh.html',{"user":present_user, "form":form})
+                                                    
+                                                  
                                           
                                                   
                                                   

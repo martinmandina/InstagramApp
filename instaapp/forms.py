@@ -6,3 +6,8 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        exclude = ['likes','profile']
