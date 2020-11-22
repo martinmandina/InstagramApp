@@ -4,7 +4,7 @@ from django.http import HttpResponse,Http404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
-from .forms import UpdateProfileForm,UploadForm
+from .forms import UpdateProfileForm,UploadForm,NewCommentForm
 
 
 # Create your views here.
@@ -70,6 +70,24 @@ def upload(request):
             else:
                 form = UploadForm()
             return render(request,'fresh.html',{"user":present_user, "form":form})
+
+@login_required(login_url='/accounts/login/')
+def add_comment(request,pk):
+    image = get_object_or_404(Image,pk=pk)
+    present_user = request.user
+    if request.method == 'POST':
+        form = NewCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.image = image
+            comment.user = present_user
+            comment.save()
+            return redirect('home')
+    else:
+        form = NewCommentForm()
+    return render(request, 'comment.html', {"user":current_user,"comment_form":form})
+                                            
+
                                                     
                                                   
                                           
