@@ -5,4 +5,27 @@ class Profile(models.Model):
     profilePhoto =  models.ImageField(upload_to='profile/',null=True,blank=True)
     bio = models.CharField(max_length=60,blank=True)
 
-    
+    def __str__(self):
+        return self.bio
+
+    def profile_save(self):
+        self.save()
+
+    def profile_delete(self):
+        self.delete()
+
+    @classmethod
+    def get_profile(cls):
+        profile = Profile.objects.all()
+        return profile
+
+    @classmethod
+    def search_profile(cls,search_term):
+        profile = cls.objects.filter(user__username__icontains=search_term)
+        return profile
+
+    @classmethod
+    def update_profile(cls,id,bio):
+        updated = Image.objects.filter(id=id).update(bio = bio)
+        return updated
+
