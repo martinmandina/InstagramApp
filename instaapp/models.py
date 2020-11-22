@@ -68,13 +68,13 @@ class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-    return self.comments
+        return self.comments
 
     def comment_save(self):
-    self.save()
+        self.save()
 
     def comment_delete(self):
-    self.delete
+        self.delete
 
     @classmethod
     def comments_get_all(cls):
