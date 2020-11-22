@@ -36,4 +36,19 @@ class Image(models.Model):
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.image_name
+
+    def image_save(self):
+        self.save()
+
+    def image_delete(self):
+        self.delete()
+
+    @classmethod
+    def images_get(cls)
+
+
+
+
 
