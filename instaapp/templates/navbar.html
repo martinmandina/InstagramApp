@@ -1,15 +1,23 @@
 {% load bootstrap4 %}
 {% load static %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
 
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url(//fonts.googleapis.com/css?family=indie+flower);
+    body {
+        font-family: 'indie flower', sans-serif;
+         }
+    
+    </style>
 </head>
 <body>
    
-    <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{% url 'home' %}">InstaApp</a>
@@ -21,7 +29,7 @@
      </div>
      <form class="search-section" role="search" action="{% url 'search' %}">
         <input class="input-search" type="search" name="username" placeholder="Search Username"/>
-        <a class="btn btn-default btn-sm" href="{% url 'search' %}" ></i> search</a>
+        <a class="btn btn-default btn-sm" href="{% url 'search' %}" ></i><h4><Strong>Search</Strong></h4></a>
       </form>
         <section class="icons-section" >
         <a href="/"><i style="color:black;" class="fa fa-align-justify "></i></a>
