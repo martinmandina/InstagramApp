@@ -85,7 +85,7 @@ def add_comment(request,pk):
             return redirect('home')
     else:
         form = NewCommentForm()
-    return render(request, 'comment.html', {"user":current_user,"comment_form":form})
+    return render(request, 'comments.html', {"user":current_user,"comment_form":form})
                                             
 
                                                     
