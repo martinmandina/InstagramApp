@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     profilePhoto =  models.ImageField(upload_to='profile/',null=True,blank=True)
     bio = models.CharField(max_length=60,blank=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.bio
@@ -46,7 +48,21 @@ class Image(models.Model):
         self.delete()
 
     @classmethod
-    def images_get(cls)
+    def images_get_all(cls):
+        image =  Image.objects.all()
+        return image
+
+    @classmethod
+    def get_image_by_id(cls,id):
+        image = Image.objects.filter(id=Image.id)
+        return image
+
+    @classmethod
+    def caption_update(cls,id,image_caption):
+        captionn = Image.objects.filter(id=id).update(image_caption = image_caption)
+        return captionn
+
+
 
 
 
