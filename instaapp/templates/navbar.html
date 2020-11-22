@@ -8,17 +8,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    {% if user.is_authenticated %}
-    <div>
-    <section class="logo-section"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png" width="70"/>
-    </div>
-<nav class="navbar navbar-inverse">
+   
+    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{% url 'home' %}">InstaApp</a>
     </div>
-
+    {% if user.is_authenticated %}
+    <div class="col-sm-6 col-md-4 navbar-left">
+    <section class="logo-section"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png" width="50"/>
+    </div>
      </div>
+     <form class="search-section" role="search" action="{% url 'search' %}">
+        <input class="input-search" type="search" name="username" placeholder="Search Username"/>
+        <a class="btn btn-default btn-sm" href="{% url 'search' %}" ></i> search</a>
+      </form>
+        <section class="icons-section" >
+        <a href="/"><i style="color:black;" class="fa fa-align-justify "></i></a>
+         <a href="{% url "upload" %}"><i style="color:black;" class="fa fa-upload "></i> UPload</a>
+        <a href="{% url "profile" %}"><i style="color:black;" class="fa fa-user "></i>MY profile</a>
+        <a href="/logout"><i style="color:black;" class="fa fa-sign-out-alt "></i>Logout</a>
+        </section>
+    </nav>
 </nav>
 {% endif %}
 
