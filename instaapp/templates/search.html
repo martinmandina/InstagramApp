@@ -9,7 +9,7 @@
         {% if username %}
         <h2>{{username | length}} user found</h2>
         {% else %}
-        <h2>Found 0 users for the searched name {{message | title}}</h2>
+        <h2>Found no users to match the  above searched name </h2>
         {% endif %}
     </div>
     <div class="row">
@@ -17,7 +17,7 @@
             {% for user in username %}
             <img src="{{user.profilePhoto.url}}" alt="" class="img-fluid" style="border-radius:50%">
             <h3 class="mt-5">
-                    <a href="{% url 'yourprofile' pk=user.user.id %}" class="btn btn-primary mt-3 ml-5">{{user.user.username}}</a>
+                    <a href="{% url 'myprofile' pk=user.user.id %}" class="btn btn-primary mt-3 ml-5">{{user.user.username}}</a>
             </h3>
             {% endfor %}
         {% endif %}

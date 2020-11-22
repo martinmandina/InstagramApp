@@ -47,10 +47,10 @@ def results_search(request):
         searched_name = Profile.search_profile(search_term)
         message = search_term
 
-        return render(request,'search.html',{"profiles":profile,"present_user":present__user,"message":message,"username":searched_name})
+        return render(request,'search.html',{"profiles":profile,"user":present__user,"message":message,"username":searched_name})
                                                                   
     else:
-        message = "You have not searched"
+        message = "Cant locate User"
         return render(request,'search.html',{"message":message})
 
 @login_required(login_url="/accounts/login/")
