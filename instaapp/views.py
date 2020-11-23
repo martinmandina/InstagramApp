@@ -1,11 +1,12 @@
 from .models import Image,Profile,Comments,InstaAppLetterRecipients
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http import HttpResponse,Http404
+from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from .forms import UpdateProfileForm,UploadForm,NewCommentForm,InstaAppLetterForm
 from .email import send_welcome_email
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -26,7 +27,7 @@ def main(request):
             recipient.save()
 
             send_welcome_email(name,email)
-            HttpResponseRedirect('news_today')
+            HttpResponseRedirect('home')
     else:
         form =InstaAppLetterForm
 
@@ -113,7 +114,8 @@ def my_profile(request,pk):
     user = get_object_or_404(User, pk=pk)
     return render(request,'profile/myprofile.html',{"user":current_user,"images":images, "user":user,"comments":comments, "profile":profile})
                                                
-                                              
+
+             
                                                
                                               
                                             
