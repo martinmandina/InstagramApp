@@ -13,6 +13,19 @@
   <div class="col-md-8 col-lg-8 col-xs-9 col-sm-9">
 <h1><b> WELCOME <br> {{user | title}}</b> <a href="{% url 'edit' %}"class="btn btn-info">Please create a profile</a>
 </h1>
+
+<h2>  {{user | title}} Subscribe to get InstaApp Updates and Changes</h2>
+<div class="container-fluid">
+
+        <form  action="{%url 'home'%}" method="post">
+          {%csrf_token%}
+      
+          {% bootstrap_form letterForm layout='inline' %}
+          <input type="submit" value="Subscribe">
+        </form>
+      
+      </div>
+
 {% for img in images %}
 {% if img.image %}
 <div class="card">
@@ -24,8 +37,6 @@
                 <a href="{% url 'yourprofile' pk=img.user.id %}">{{img.user.username}}</a>
                 {% endif %}
         </div>
-
-
 <div class="card-body">
 <img src="{{img.image.url}}" alt="" class="img-fluid" style="width:100%; height:100%">
 <hr>
@@ -46,7 +57,7 @@
             </div>
             {% endif %}
             <div class="row">
-                    <h5 style="padding: 8px"><a href="{% url 'yourprofile' pk=img.user.id %}"><b>{{img.user.username}}</b></a> {{img.caption}}</h5>
+                    <h5 style="padding: 8px"><a href="{% url 'myprofile' pk=img.user.id %}"><b>{{img.user.username}}</b></a> {{img.caption}}</h5>
             </div>
             <h6>{{img.upload_date | timesince}} ago</h6>
             <hr>
@@ -65,9 +76,8 @@
 <br><br>
 {% endfor %}
 </div>
-                        <div class="col-md-2 col-lg-2 col-xs-1 col-sm-1"></div>
+         <div class="col-md-2 col-lg-2 col-xs-1 col-sm-1"></div>
         </div>
-
 </div>
 {% endblock %}
 </body>

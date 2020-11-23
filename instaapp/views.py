@@ -1,4 +1,4 @@
-from .models import Image,Profile,Comments
+from .models import Image,Profile,Comments,InstaAppLetterRecipients
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse,Http404
 from django.contrib.auth.models import User
@@ -15,8 +15,23 @@ def main(request):
     profile = Profile.get_profile()
     images = Image.images_get_all()
     comments = Comments.comments_get_all()
-    form = 
-    return render(request, 'index.html', {'images':images,"profile":profile,"present_user":present_user,"comments":comments})
+    form = InstaAppLetterForm()
+
+    if request.method == 'POST':
+        form = InstaAppLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+            recipient = InstaAppLetterRecipients(name = name,email =email)
+            recipient.save()
+
+            send_welcome_email(name,email)
+            HttpResponseRedirect('news_today')
+    else:
+        form =InstaAppLetterForm
+
+
+    return render(request, 'index.html', {'images':images,"profile":profile,"present_user":present_user,"comments":comments,"letterForm":form})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
