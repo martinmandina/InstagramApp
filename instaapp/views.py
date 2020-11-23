@@ -4,7 +4,8 @@ from django.http import HttpResponse,Http404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
-from .forms import UpdateProfileForm,UploadForm,NewCommentForm
+from .forms import UpdateProfileForm,UploadForm,NewCommentForm,InstaAppLetterForm
+from .email import send_welcome_email
 
 
 # Create your views here.
@@ -14,6 +15,7 @@ def main(request):
     profile = Profile.get_profile()
     images = Image.images_get_all()
     comments = Comments.comments_get_all()
+    form = 
     return render(request, 'index.html', {'images':images,"profile":profile,"present_user":present_user,"comments":comments})
 
 @login_required(login_url='/accounts/login/')
