@@ -1,9 +1,8 @@
 ## InstaApp
-===================
 
-#### Live link-
+#### Live link''
 ### Description:
-#### This is an django application that  allows uploads of images by a user to their profiles similar to the popular app [instagram](https://instagram.com)
+* This is an django application that  allows uploads of images by a user to their profiles similar to the popular app [instagram](https://instagram.com)
 
 ### User BDD:
 * Register to the application.
@@ -51,13 +50,13 @@ EMAIL_HOST_PASSWORD = '<your-password>'
 ```
 
 ### Known Bugs
-*With slow internet speeds deployment to heroku is not a given.
+* With slow internet speeds deployment to heroku is not a given.
 ### AUTHOR:
-*Martin Sila Mandina.
+* Martin Sila Mandina.
 ## CONTACT INFORMATION
-*Martin Sila Mandina
-*P.O. Box 70055 - 00400 Nairobi, Kenya
-*Email: martinsmandina@gmail.com
-*TEL:+254 722 675 630
-*LICENSE
+* Martin Sila Mandina
+* P.O. Box 70055 - 00400 Nairobi, Kenya
+* Email: martinsmandina@gmail.com
+* TEL:+254 722 675 630
+* LICENSE
 #### * Copyright (c) 2020 **Martin Mandina**
