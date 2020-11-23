@@ -17,11 +17,12 @@
   {% block styles %}
     {% bootstrap_css %}
   {% endblock %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/insta.png' %}"/>
 
 </head>
 
 <body>
-
+    {% include "navbar.html" %}
   {% block content %}  {%endblock%}
 
 
