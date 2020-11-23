@@ -81,6 +81,10 @@ class Comments(models.Model):
         comments = Comments.objects.all()
         return comments
 
+class InstaAppLetterRecipients(models.Model):
+        name = models.CharField(max_length = 30)
+        email = models.EmailField()
+
 
 
 
