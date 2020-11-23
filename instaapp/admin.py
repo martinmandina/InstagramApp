@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Profile,Image,Comments
+from .models import Profile,Image,Comments,InstaAppLetterRecipients
 
 # Register your models here.
 admin.site.register(Profile)
 admin.site.register(Image)
 admin.site.register(Comments)
+admin.site.register(InstaAppLetterRecipients)
 

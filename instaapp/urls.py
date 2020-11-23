@@ -12,9 +12,6 @@ urlpatterns=[
     url(r'^comment/(?P<pk>\d+)',views.add_comment,name='comment'),
     url(r'^myprofile/(?P<pk>\d+)',views.my_profile,name='myprofile'),
     
-
-
-
 ]
 
 if settings.DEBUG:
