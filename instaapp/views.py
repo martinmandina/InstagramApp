@@ -10,7 +10,7 @@ from django.contrib.auth import logout
 
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def main(request):
     present_user = request.user
     profile = Profile.get_profile()
@@ -34,7 +34,7 @@ def main(request):
 
     return render(request, 'index.html', {'images':images,"profile":profile,"present_user":present_user,"comments":comments,"letterForm":form})
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def profile(request):
     present_user = request.user
     profile = Profile.get_profile()
@@ -56,7 +56,7 @@ def edit(request):
         form = UpdateProfileForm()
     return render(request,'profile/update.html',{"form":form}) 
                                                 
-@login_required(login_url="/accounts/login/")
+# @login_required(login_url="/accounts/login/")
 def results_search(request):
     present_user = request.user
     profile = Profile.get_profile()
@@ -71,7 +71,7 @@ def results_search(request):
         message = "Cant locate User"
         return render(request,'search.html',{"message":message})
 
-@login_required(login_url="/accounts/login/")
+# @login_required(login_url="/accounts/login/")
 def upload(request):
     present_user = request.user
     profiles = Profile.get_profile()
@@ -89,7 +89,7 @@ def upload(request):
                 form = UploadForm()
             return render(request,'fresh.html',{"user":present_user, "form":form})
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def add_comment(request,pk):
     image = get_object_or_404(Image,pk=pk)
     present_user = request.user
@@ -105,7 +105,7 @@ def add_comment(request,pk):
         form = NewCommentForm()
     return render(request, 'comments.html', {"user":present_user,"comment_form":form})
 
-@login_required(login_url="/accounts/login/")
+# @login_required(login_url="/accounts/login/")
 def my_profile(request,pk):
     present_user = request.user
     images = Image.get_images()
