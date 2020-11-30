@@ -2,7 +2,7 @@
 
 #### Live link-https://instaapp2020.herokuapp.com/
 ### Description:
-* This is an django application that  allows uploads of images by a user to their profiles similar to the popular app [instagram](https://instagram.com)
+* This is an django application that  allows uploads of images by a user to their profiles similar to the popular app [instagram](https://instagram.com).
 
 ### User BDD:
 * Register to the application.
